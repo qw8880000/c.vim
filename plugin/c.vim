@@ -66,25 +66,11 @@ let s:C_FilenameEscChar 		= ''
 if	s:MSWIN
   " ==========  MS Windows  ======================================================
 	"
-	" change '\' to '/' to avoid interpretation as escape character
-	if match(	substitute( expand("<sfile>"), '\', '/', 'g' ), 
-				\		substitute( expand("$HOME"),   '\', '/', 'g' ) ) == 0
-		"
-		" USER INSTALLATION ASSUMED
+		" USER INSTALLATION IN WINDOWS
 		let s:installation					= 'local'
 		let s:plugin_dir  					= substitute( expand('<sfile>:p:h:h'), '\', '/', 'g' )
 		let s:C_LocalTemplateFile		= s:plugin_dir.'/c-support/templates/Templates'
 		let s:C_LocalTemplateDir		= fnamemodify( s:C_LocalTemplateFile, ":p:h" ).'/'
-	else
-		"
-		" SYSTEM WIDE INSTALLATION
-		let s:installation					= 'system'
-		let s:plugin_dir						= $VIM.'/vimfiles'
-		let s:C_GlobalTemplateDir		= s:plugin_dir.'/c-support/templates'
-		let s:C_GlobalTemplateFile  = s:C_GlobalTemplateDir.'/Templates'
-		let s:C_LocalTemplateFile		= $HOME.'/vimfiles/c-support/templates/Templates'
-		let s:C_LocalTemplateDir		= fnamemodify( s:C_LocalTemplateFile, ":p:h" ).'/'
-	endif
 	"
   let s:C_FilenameEscChar 			= ''
 	"
